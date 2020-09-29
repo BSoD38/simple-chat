@@ -277,12 +277,10 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
         // instantiate the chatroom
         final Chatroom<T> newChatroom = new Chatroom<>(chatroomName, owner, new ArrayList<>());
 
-        // add it in the model
-        final int newChatroomId = chatInstance.addChatroom(newChatroom);
-
         /* maybe I should notify clients about the new chatroom ?? */
 
-        return newChatroomId;
+        notifyNewChatroom(newChatroom);
+        return chatInstance.addChatroom(newChatroom);
     }
 
     /**
@@ -323,10 +321,11 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
      */
     @Override
     public Message<T> notifyNewMessage(int chatroomId, Message<T> newMessage) {
-
-        clientNotifiers.forEach(
-                client -> client.notifyNewMessage(chatroomId, newMessage)
-        );
+        if (clientNotifiers != null) {
+            clientNotifiers.forEach(
+                    client -> client.notifyNewMessage(chatroomId, newMessage)
+            );
+        }
         return newMessage;
     }
 
