@@ -13,7 +13,7 @@ public class UserAccountTest {
         final UserAccount user = new UserAccount(0, username);
 
         assertEquals("The username should be the one set in the constructor",
-                username, user.getId());
+                username, user.getUsername());
     }
 
     @Test

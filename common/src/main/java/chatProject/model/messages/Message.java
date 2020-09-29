@@ -34,7 +34,7 @@ public class Message<T> {
      * @return the message unique ID
      */
     public int getId() {
-        return 0;
+        return this.id;
     }
 
     /**
