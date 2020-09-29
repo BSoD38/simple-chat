@@ -1,0 +1,6 @@
+rootProject.name = 'SimpleChat'
+
+include 'common'
+include 'server'
+include 'clients:console'
+

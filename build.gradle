@@ -1,0 +1,47 @@
+plugins {
+    // central reports in ./build/buildDashboard
+    id 'build-dashboard'
+}
+
+subprojects {
+
+
+	// Java plugin for dev
+	apply plugin: 'java'
+
+	// Groovy plugin for Spock tests
+	apply plugin: 'groovy'
+
+	group 'avenelt'
+	version '1.0-SNAPSHOT'
+
+	// build for Java 8
+	sourceCompatibility = 1.8
+
+	if (project.parent.name == 'clients' || project.name == 'server') {
+		// apply the Java 'application' plugin - adds the 'run' task to run Java's main methods
+		apply plugin: 'application'
+	}
+
+	// use Maven central to get libraries
+	repositories {
+		mavenCentral()
+	}
+
+	// add dependecy on 'common' project for all other projects
+	if (project.name != 'common') {
+		dependencies {
+			implementation project(':common')
+		}
+	}
+
+        // common dependencies for all projects
+	dependencies {
+
+        // add JUnit tests
+	testImplementation group: 'junit', name: 'junit', version: '4.12'
+	}
+
+
+}
+

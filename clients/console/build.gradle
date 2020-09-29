@@ -1,0 +1,21 @@
+application {
+    // the main class to run
+    mainClassName = 'chatProject.client.Main'
+
+    run {
+        // default arguments : connect to the server locally on ports 1234 and 4567
+        args = ["127.0.0.1", "1234", "4567"]
+    }
+}
+
+dependencies {
+
+    // the Json library
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    // HTTP components library to perform calls to the web service easily
+    implementation 'org.apache.httpcomponents:fluent-hc:4.5.12'
+
+    // The UI framework (Lanterna)
+    implementation 'com.googlecode.lanterna:lanterna:3.0.3'
+}
