@@ -37,6 +37,7 @@ public class Chatroom<T> {
      * @return the name of the chatroom
      */
     public String getName() {
+        return this.name;
     }
 
     /**
