@@ -131,15 +131,13 @@ public class ChatroomGUI<T> implements MessageListener<T>, UserListener {
 
 
     @Override
-    public Message<T> notifyNewMessage(int chatroomId, Message<T> message) {
+    public void notifyNewMessage(int chatroomId, Message<T> message) {
         messages.addLine(messageAsString(message));
-        return message;
     }
 
     @Override
-    public UserInfo notifyUserChange(UserInfo user) {
+    public void notifyUserChange(UserInfo user) {
         // a user changed - refresh the messages (best effort)
         // the content is already refreshed by the refresh thread every second
-        return user;
     }
 }

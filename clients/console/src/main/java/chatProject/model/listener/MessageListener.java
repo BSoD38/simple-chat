@@ -12,7 +12,6 @@ public interface MessageListener<T> {
      * Notifies for a new message created
      * @param chatroomId the ID of the chatroom that received the message
      * @param message the new message
-     * @return the new message
      */
-    Message<T> notifyNewMessage(int chatroomId, Message<T> message);
+    void notifyNewMessage(int chatroomId, Message<T> message);
 }

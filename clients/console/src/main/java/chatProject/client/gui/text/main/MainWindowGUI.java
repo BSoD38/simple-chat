@@ -90,8 +90,7 @@ public class MainWindowGUI<T> implements ChatroomsListener<T> {
     }
 
     @Override
-    public Chatroom<T> notifyNewChatroom(Chatroom<T> newChatroom) {
+    public void notifyNewChatroom(Chatroom<T> newChatroom) {
         chatroomComboBox.addItem(newChatroom.getName());
-        return newChatroom;
     }
 }

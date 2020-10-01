@@ -12,7 +12,6 @@ public interface ChatroomsListener<T> {
     /**
      * Notifies clients about a new chatroom.
      * @param newChatroom the new chatroom
-     * @return the new chatroom
      */
-    Chatroom<T> notifyNewChatroom(Chatroom<T> newChatroom);
+    void notifyNewChatroom(Chatroom<T> newChatroom);
 }
