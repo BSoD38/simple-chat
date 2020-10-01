@@ -71,11 +71,10 @@ public class ChatInstance<T> {
             final UserInfo userInfo = accountAlreadyPresent.get();
             userInfo.setCurrentStatus(newUser.getCurrentStatus());
             users.replace(userInfo, LocalTime.now());
-            return true;
         } else {
             users.put(newUser, LocalTime.now());
-            return true;
         }
+        return true;
     }
 
     /**

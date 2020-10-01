@@ -78,7 +78,7 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
                 json);
 
         // open a dedicated thread to manage the socket for notifications.
-        final Thread socketThread = new Thread(new Runnable() {
+        server.socketThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -88,7 +88,6 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
                 }
             }
         });
-        server.socketThread = socketThread;
 
         //TODO: I should start the socket thread here
 

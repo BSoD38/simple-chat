@@ -14,7 +14,7 @@ public class UserInfo {
     /**
      * The current status of the user.
      */
-    private Status currentStatus;
+    private final Status currentStatus;
 
     public UserInfo(UserAccount account, Status currentStatus) {
         this.account = account;
