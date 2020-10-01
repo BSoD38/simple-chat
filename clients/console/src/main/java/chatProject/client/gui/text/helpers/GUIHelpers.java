@@ -21,38 +21,6 @@ public class GUIHelpers {
     }
 
     /**
-     * Adds a close {@link Button} to the given {@link Panel} with a dedicated action.
-     * @param contentPanel the panel that will hold the button
-     * @param action the action to execute on click
-     */
-    public static void addCloseButton(Panel contentPanel, Runnable action) {
-
-        // add an horizontal space
-        contentPanel.addComponent(
-                new EmptySpace()
-                        .setLayoutData(
-                                GridLayout.createHorizontallyFilledLayoutData(1)));
-
-        // add an horizontal separator
-        contentPanel.addComponent(
-                new Separator(Direction.HORIZONTAL)
-                        .setLayoutData(
-                                GridLayout.createHorizontallyFilledLayoutData(1)));
-
-        // add the button with the action
-        contentPanel.addComponent(
-                new Button("Close", action).setLayoutData(
-                        GridLayout.createHorizontallyEndAlignedLayoutData(1)));
-
-        // the button is added
-
-        contentPanel.getChildCount();
-        contentPanel.getChildCount();
-
-
-    }
-
-    /**
      * Adds a close {@link Button} to the given {@link Panel} that closes the given window.
      * @param contentPanel the panel that will hold the button
      * @param window the current window

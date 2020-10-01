@@ -26,19 +26,6 @@ public class Main {
         // start the server implementation
         final ChatServer<String> server = ChatServer.initEmptyChat(socketPort, json);
 
-        /*
-        new ChatServer<>(FakeInstances.DUMMY_CHAT_INSTANCE, new HashSet<>(), json);
-
-        final Thread serverThread = new Thread(() -> {
-            try {
-                server.openSocket(socketPort);
-            } catch (IOException e) {
-                System.exit(1);
-            }
-        });
-        serverThread.start();
-         */
-
         // start the web services
         new ChatServerService<>(server, json).serve(webServerPort);
 
