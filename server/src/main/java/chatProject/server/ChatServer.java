@@ -293,9 +293,11 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
      */
     @Override
     public List<Message<T>> getChatroomMessages(int chatroomId) {
-        return Optional.ofNullable(getChatroom(chatroomId))
-                .get()
-                .getCurrentMessages();
+        Optional<Chatroom<T>> optional = Optional.ofNullable(getChatroom(chatroomId));
+        if (optional.isPresent()) {
+            return optional.get().getCurrentMessages();
+        }
+        return new LinkedList<>();
     }
 
     /**

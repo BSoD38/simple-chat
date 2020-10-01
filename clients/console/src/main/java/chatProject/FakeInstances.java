@@ -9,6 +9,7 @@ import chatProject.model.user.UserInfo;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,7 +44,7 @@ public class FakeInstances {
             new Chatroom<>(
                     "ROOM 1",
                     DUMMY_ACTIVE_USER,
-                    new ArrayList<>(asList(DUMMY_MESSAGE_2))
+                    new ArrayList<>(Collections.singletonList(DUMMY_MESSAGE_2))
             );
     public static final Chatroom<String> DUMMY_CHATROOM_2 =
             new Chatroom<>(
