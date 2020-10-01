@@ -14,7 +14,7 @@ public class UserInfo {
     /**
      * The current status of the user.
      */
-    private final Status currentStatus;
+    private Status currentStatus;
 
     public UserInfo(UserAccount account, Status currentStatus) {
         this.account = account;
@@ -42,6 +42,7 @@ public class UserInfo {
      * @param currentStatus the status of the user
      */
     public void setCurrentStatus(Status currentStatus) {
+        this.currentStatus = currentStatus;
     }
 
     @Override
