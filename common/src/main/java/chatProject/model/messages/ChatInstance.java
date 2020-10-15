@@ -82,7 +82,7 @@ public class ChatInstance<T> {
      * @return the collection of users in the chat.
      */
     public Map<UserInfo, LocalTime> getUsers() {
-        return null;
+        return this.users;
     }
 
     /**
@@ -91,7 +91,7 @@ public class ChatInstance<T> {
      * @return the new chat instance
      */
     public static <T> ChatInstance<T> initEmptyChat() {
-        return new ChatInstance<>(new ArrayList<>(), null);
+        return new ChatInstance<>(new ArrayList<>(), new HashMap<>());
     }
 
 }
