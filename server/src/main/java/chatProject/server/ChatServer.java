@@ -78,14 +78,11 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
                 json);
 
         // open a dedicated thread to manage the socket for notifications.
-        server.socketThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    server.openSocket(socketPort);
-                } catch (IOException e) {
-                    throw new RuntimeException("Unable to open new socket on port " + socketPort, e);
-                }
+        server.socketThread = new Thread(() -> {
+            try {
+                server.openSocket(socketPort);
+            } catch (IOException e) {
+                throw new RuntimeException("Unable to open new socket on port " + socketPort, e);
             }
         });
 

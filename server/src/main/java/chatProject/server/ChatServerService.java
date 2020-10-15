@@ -54,11 +54,9 @@ public class ChatServerService<T> {
             )
         );
 
-        get("/messages/:chatroomId", (request, response) -> {
-                    return json.toJson(
-                            server.getChatroomMessages(Integer.parseInt(request.params("chatroomId")))
-                    );
-                }
+        get("/messages/:chatroomId", (request, response) -> json.toJson(
+                server.getChatroomMessages(Integer.parseInt(request.params("chatroomId")))
+        )
         );
 
         post("/login", (request, response) ->
