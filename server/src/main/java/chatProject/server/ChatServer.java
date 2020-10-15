@@ -86,7 +86,7 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
             }
         });
 
-        //TODO: I should start the socket thread here
+        server.socketThread.start();
 
         server.checkIdleClients();
 
@@ -99,7 +99,6 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
      * @throws IOException if the socket cannot be opened
      */
     public void openSocket(int port) throws IOException {
-
         // open the socket in a try-with-resources (auto close the socket on exit)
         try (ServerSocket serverSocket = new ServerSocket(port)) {
 
