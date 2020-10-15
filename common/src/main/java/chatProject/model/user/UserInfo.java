@@ -52,8 +52,14 @@ public class UserInfo {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
         UserInfo userInfo = (UserInfo) o;
         return account.equals(userInfo.account) &&
                 currentStatus == userInfo.currentStatus;
