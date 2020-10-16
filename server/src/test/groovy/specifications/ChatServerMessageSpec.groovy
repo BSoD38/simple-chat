@@ -2,6 +2,9 @@ package specifications
 
 import chatProject.model.messages.ChatInstance
 import chatProject.model.messages.Message
+import chatProject.model.user.Status
+import chatProject.model.user.UserAccount
+import chatProject.model.user.UserInfo
 import chatProject.server.ChatServer
 import chatProject.server.ClientNotifierInterface
 import spock.lang.Specification
@@ -16,7 +19,7 @@ class ChatServerMessageSpec extends Specification {
         int chatroomId = server.addChatroom(null, null)
 
         when: "A new message is created in the Chatroom"
-        server.addMessage(chatroomId, null, "Test message")
+        server.addMessage(chatroomId, new UserInfo(new UserAccount(1, "test"), Status.ACTIVE), "Test message")
 
         then: "The new message should be added to the model"
         // get messages in the chatroom
@@ -25,9 +28,12 @@ class ChatServerMessageSpec extends Specification {
                 .collect { it.message }
                 // check if the content matches the expected one
                 .contains("Test message")
+        server.getChatroomMessages(chatroomId)
+                .collect{it.sender.account.username}
+                .contains("test")
     }
 
-    def "Adding a new Message should notify clients about the new message"() {
+    def "Adding a new Message should correctly add the message to the list and notify clients about the new message"() {
         given: "A client notifier"
         // use a Mock (fake) ClientNotifier to avoid opening a real socket
         // we only want to test interactions
@@ -39,11 +45,13 @@ class ChatServerMessageSpec extends Specification {
         int chatroomId = server.addChatroom(null, null)
 
         when: "A new message is added"
-        server.addMessage(chatroomId, null, "Test message")
+        Message msg = server.addMessage(chatroomId, new UserInfo(new UserAccount(1, "test"), Status.ACTIVE), "Test message")
 
         then: "The client listener should be notified about a new message"
         // this check means : the 'clientNotifier.notifyNewMessage()' method was called 1x
         // on the expected chatroom
+        server.getChatroomMessages(chatroomId).size() == 1
+        server.getChatroomMessages(chatroomId).first() == msg
         1 * clientNotifier.notifyNewMessage(chatroomId, _)
     }
 
