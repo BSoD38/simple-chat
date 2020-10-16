@@ -1,6 +1,10 @@
 plugins {
     // central reports in ./build/buildDashboard
     id 'build-dashboard'
+	id 'pmd'
+	id 'checkstyle'
+	id "com.github.spotbugs" version "4.5.1"
+	id 'jacoco'
 }
 
 subprojects {
